@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Radar de Ingresos - Acaba con el miedo de elegir el negocio equivocado</title>
+  <meta name="description" content="Mini-app interactiva que filtra 15 rutas de ingresos pasivos y te entrega el plan exacto de 30 días para empezar según tu capital y tiempo libre.">
+  <meta name="keywords" content="ingresos pasivos, ideas de negocio, emprendimiento latino, automatizaciones, validar negocio, plan de accion">
+  <meta name="author" content="Radar de Ingresos">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Decorative Glowing Spheres -->
+  <div class="bg-glow-1"></div>
+  <div class="bg-glow-2"></div>
+  <div class="bg-glow-3"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">
+        <div class="logo-icon"></div>
+        <span>Radar de Ingresos</span>
+      </div>
+      <a href="#precios" class="nav-cta open-checkout-trigger" id="navCtaBtn">Comenzar Diagnóstico</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          <span>Herramienta Interactiva Actualizada v2.4</span>
+        </div>
+        <h1>Acaba con el miedo de elegir el negocio equivocado</h1>
+        <p class="subtitle">
+          Mini-app que filtra 15 rutas de ingresos pasivos y te entrega el plan exacto para empezar según tu capital y tiempo libre. Sin perder meses en tutoriales interminables.
+        </p>
+        
+        <!-- Highlights Checklist -->
+        <ul style="list-style: none; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 0.8rem;">
+          <li class="pricing-list-item">
+            <span class="pricing-list-item-check">✓</span>
+            <span style="color: var(--text-primary); font-weight: 500;">El diagnóstico de 15 minutos que cruza tus ahorros reales con el mercado.</span>
+          </li>
+          <li class="pricing-list-item">
+            <span class="pricing-list-item-check">✓</span>
+            <span style="color: var(--text-primary); font-weight: 500;">El plan de 30 días detallado para que dejes de planear y empieces a ejecutar.</span>
+          </li>
+          <li class="pricing-list-item">
+            <span class="pricing-list-item-check">✓</span>
+            <span style="color: var(--text-primary); font-weight: 500;">Calcula al instante tu Índice de Fricción real para evitar el abandono.</span>
+          </li>
+        </ul>
+
+        <div class="hero-price-anchor">
+          <span class="price-original">Antes $87</span>
+          <span class="price-current">Hoy solo $27</span>
+        </div>
+
+        <div class="btn-container" style="align-items: flex-start; margin: 1.5rem 0;">
+          <a href="#checkout" class="btn-primary open-checkout-trigger" id="heroCtaBtn">Quiero elegir mi ruta ahora</a>
+          <div class="cta-subtext" style="justify-content: flex-start;">
+            <span>Garantía de 7 días</span>
+            <span>Acceso inmediato</span>
+            <span>Pago 100% Seguro</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-image-wrapper">
+        <div class="hero-image-container">
+          <img src="radar_mockup.jpg" alt="Radar de Ingresos Dashboard Mockup" class="hero-image" id="heroMockupImg">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Qualifying Section ("¿Esto es para mí?") -->
+  <section class="section-secondary" id="cualificacion">
+    <div class="container pain-grid">
+      <div class="pain-list">
+        <div class="pain-item">
+          <span class="pain-icon">✕</span>
+          <div class="pain-text">Llenas tu celular de capturas de pantalla con ideas de negocio que nunca aplicas por falta de un camino claro.</div>
+        </div>
+        <div class="pain-item">
+          <span class="pain-icon">✕</span>
+          <div class="pain-text">Trabajas toda la semana y sientes culpa por descansar el fin de semana en lugar de emprender.</div>
+        </div>
+        <div class="pain-item">
+          <span class="pain-icon">✕</span>
+          <div class="pain-text">Ya compraste un curso largo que abandonaste porque exigía un capital o conocimientos técnicos que no tenías.</div>
+        </div>
+        <div class="pain-item">
+          <span class="pain-icon">✕</span>
+          <div class="pain-text">Quieres saber exactamente qué pasos dar en los próximos 30 días sin perderte en Google.</div>
+        </div>
+      </div>
+
+      <div class="pain-right">
+        <span class="section-tag" style="text-align: left;">Autoevaluación</span>
+        <h3>¿Te identificas con alguna de estas situaciones?</h3>
+        <p>
+          Si respondiste que <strong>SÍ a 3 o más opciones</strong>, estás atrapado en la parálisis de opciones. No es tu culpa: internet está saturado de promesas de dinero fácil que no encajan con tu vida real.
+        </p>
+        <p>
+          El Radar de Ingresos está diseñado específicamente para profesionales que no tienen 8 horas libres al día ni miles de dólares para arriesgar.
+        </p>
+        <div class="pain-verdict">
+          Si encajas en este perfil, sigue leyendo. Hay una salida diseñada a tu medida.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Agitation Section -->
+  <section class="section-dark" id="el-problema">
+    <div class="container" style="max-width: 800px; text-align: center;">
+      <span class="section-tag">La Realidad Detrás del Emprendimiento</span>
+      <h2>Ese peso en el pecho de ver cómo pasan los meses sin avanzar</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1.05rem;">
+        Llegas cansado del trabajo. Sabes que un solo sueldo no es seguro en Latinoamérica, pero cuando buscas opciones de ingresos extras, terminas abrumado por la cantidad de gurús diciendo cosas opuestas. Cierras la computadora sintiendo que perdiste otra noche valiosa de descanso.
+      </p>
+      <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1.05rem;">
+        El problema real no es tu falta de disciplina, es la <strong>Niebla de Opciones</strong>. Listas interminables de ideas que ocultan el riesgo, el capital necesario y las horas reales de mantenimiento que exige cada modelo de negocio.
+      </p>
+      <div class="glass-card" style="margin-top: 3rem; border-left: 4px solid var(--accent-purple); text-align: left; padding: 2rem;">
+        <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.8rem;">¿Por qué buscar en YouTube te aleja de tu meta?</h3>
+        <p style="color: var(--text-secondary); font-size: 0.95rem; margin: 0;">
+          Los tutoriales gratuitos te venden la idea correcta para el creador del video (que tiene equipos de trabajo y mucho dinero para invertir), pero totalmente incompatible con tu bolsillo y tu horario actual. Necesitas un filtro neutro y matemático.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Simulator Section (Interactive Preview) -->
+  <section class="section-secondary" id="simulador">
+    <div class="container">
+      <span class="section-tag">Prueba en Vivo</span>
+      <h2>Prueba el Radar de Ingresos (Demo Interactiva)</h2>
+      <p class="subtitle">
+        Desliza los controles de abajo para ingresar tu presupuesto inicial y las horas semanales disponibles. El sistema calculará tu ruta óptima según nuestro algoritmo de fricción.
+      </p>
+
+      <div class="glass-card simulator-card">
+        <div class="simulator-header">
+          <h3>Calculadora de Fricción y Rutas de Activos</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem;">Esta es una simulación interactiva simplificada de la herramienta completa.</p>
+        </div>
+
+        <div class="simulator-controls">
+          <!-- Control 1: Capital -->
+          <div class="control-group">
+            <div class="control-label">
+              <span>Capital disponible para arrancar:</span>
+              <span class="control-val" id="capitalVal">$200</span>
+            </div>
+            <input type="range" id="capitalSlider" class="range-slider" min="50" max="1500" step="50" value="200">
+          </div>
+
+          <!-- Control 2: Horas -->
+          <div class="control-group">
+            <div class="control-label">
+              <span>Tiempo libre a la semana:</span>
+              <span class="control-val" id="timeVal">8 horas</span>
+            </div>
+            <input type="range" id="timeSlider" class="range-slider" min="2" max="25" step="1" value="8">
+          </div>
+
+          <!-- Control 3: Habilidades -->
+          <div class="control-group">
+            <label class="control-label">Elige tus habilidades existentes (opcional):</label>
+            <div class="skills-selector">
+              <button type="button" class="skill-btn" data-skill="marketing">Marketing Digital</button>
+              <button type="button" class="skill-btn" data-skill="ventas">Ventas / Negociación</button>
+              <button type="button" class="skill-btn" data-skill="diseno">Diseño Gráfico</button>
+              <button type="button" class="skill-btn" data-skill="programacion">Programación</button>
+              <button type="button" class="skill-btn active" data-skill="ninguna">Ninguna / Iniciante</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Result Box -->
+        <div class="simulator-result-box" id="simulatorResult">
+          <!-- Populated dynamically via JS -->
+          <div class="result-placeholder">Cargando diagnóstico en tiempo real...</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="section-dark" id="metodo">
+    <div class="container">
+      <span class="section-tag">El Método Científico</span>
+      <h2>3 pasos para salir de la parálisis y tener un plan claro</h2>
+      <p class="subtitle">
+        Distinto de un curso largo y tedioso. Sin teoría innecesaria ni videos de relleno. Así es como la herramienta construye tu camino al éxito en 15 minutos:
+      </p>
+
+      <div class="steps-grid">
+        <!-- Step 1 -->
+        <div class="glass-card step-card">
+          <div class="step-num">01</div>
+          <h3 style="margin-top: 1.5rem;">Diagnóstico de Recursos</h3>
+          <p>
+            Respondes preguntas directas sobre tus ahorros disponibles, tu tiempo libre semanal real y tu tolerancia al riesgo psicológico.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="glass-card step-card">
+          <div class="step-num">02</div>
+          <h3 style="margin-top: 1.5rem;">Matriz de Fricción</h3>
+          <p>
+            El sistema cruza tus datos con 15 rutas de negocios validadas. Descarta lo que requiere alto mantenimiento o capital y prioriza lo viable para ti.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="glass-card step-card">
+          <div class="step-num">03</div>
+          <h3 style="margin-top: 1.5rem;">Plan de 30 Días</h3>
+          <p>
+            Recibes un documento de tareas exactas, día por día. Sabrás exactamente qué hacer cada noche para validar tu primer activo en 4 semanas.
+          </p>
+        </div>
+      </div>
+
+      <!-- Real Example Box -->
+      <div class="example-box">
+        <h3>💡 Ejemplo Práctico de Diagnóstico</h3>
+        <p>
+          Imagina que dispones de solo <strong>2 horas al día y $200 para comenzar</strong>. Si buscas en foros, la mayoría te sugerirá montar una tienda online de importación o hacer marketing multinivel.
+        </p>
+        <p class="example-quote">
+          El Radar de Ingresos detectará de inmediato que esas rutas consumen demasiado capital inicial en publicidad y exigen logística diaria de atención. En su lugar, el sistema te dirigirá a modelos basados en servicios digitales apalancados o venta de activos digitales de bajo costo, entregándote el manual de ejecución paso a paso para configurar tu oferta en las primeras 48 horas.
+        </p>
+        <p style="margin: 0; color: var(--accent-green); font-weight: 700;">
+          No recibes información genérica ni promesas infladas. Recibes un camino diseñado exclusivamente para tus condiciones actuales.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bonuses Section -->
+  <section class="section-secondary" id="bonos">
+    <div class="container">
+      <span class="section-tag">Regalos de Lanzamiento</span>
+      <h2>Bonos Incluidos Totalmente Gratis</h2>
+      <p class="subtitle">
+        Al adquirir tu acceso hoy al Radar de Ingresos, te llevas integradas estas 4 herramientas interactivas y automatizadas dentro de la app:
+      </p>
+
+      <div class="bonuses-grid">
+        <!-- Bono 1 -->
+        <div class="glass-card bonus-card">
+          <span class="bonus-badge">Bono 1</span>
+          <h3>Filtro Antihumo</h3>
+          <p>
+            Calculadora inteligente que destapa los costos ocultos, comisiones escondidas y riesgos reales de cualquier modelo de negocio digital antes de que inviertas un solo dólar en él.
+          </p>
+        </div>
+
+        <!-- Bono 2 -->
+        <div class="glass-card bonus-card" style="border-left-color: var(--accent-blue);">
+          <span class="bonus-badge" style="background: rgba(59, 130, 246, 0.1); color: var(--accent-blue); border-color: rgba(59, 130, 246, 0.2);">Bono 2</span>
+          <h3>Agenda Viable</h3>
+          <p>
+            Simulador interactivo que encaja y programa las micro-tareas semanales de tu nuevo proyecto dentro de tus horas libres actuales, sin tener que sacrificar tu empleo ni tu tiempo de sueño.
+          </p>
+        </div>
+
+        <!-- Bono 3 -->
+        <div class="glass-card bonus-card" style="border-left-color: var(--accent-purple);">
+          <span class="bonus-badge" style="background: rgba(139, 92, 246, 0.1); color: var(--accent-purple); border-color: rgba(139, 92, 246, 0.2);">Bono 3</span>
+          <h3>Checklist de Arranque</h3>
+          <p>
+            Una guía paso a paso y completamente interactiva para configurar la infraestructura tecnológica de tu ruta asignada en las primeras 48 horas, evitando perderte en manuales de programación.
+          </p>
+        </div>
+
+        <!-- Bono 4 -->
+        <div class="glass-card bonus-card">
+          <span class="bonus-badge">Bono 4</span>
+          <h3>Recalibrador Mensual</h3>
+          <p>
+            Herramienta integrada para volver a evaluar tu estrategia y ajustar el plan si a mitad de camino tus horas libres disminuyen o tu presupuesto para reinversión varía.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section-dark" id="testimonios">
+    <div class="container">
+      <span class="section-tag">Testimonios de Usuarios</span>
+      <h2>Lo que están diciendo personas reales</h2>
+      <p class="subtitle">
+        Ellos salieron de la frustración de buscar ingresos alternativos sin dirección y ahora tienen un plan estructurado:
+      </p>
+
+      <div class="testimonials-grid">
+        <!-- Testimonial 1 -->
+        <div class="glass-card testimonial-card">
+          <p class="testimonial-quote">
+            Evitaba pensar en crear un negocio paralelo por miedo a perder mis ahorros en publicidad de Facebook. Cuando vi el plan de Radar adaptado a mis 200 dólares iniciales, sentí que mi cabeza se destrabó por completo.
+          </p>
+          <div class="testimonial-user">
+            <div class="testimonial-avatar" style="background-image: radial-gradient(circle, var(--accent-blue) 0%, var(--accent-purple) 100%);"></div>
+            <div class="testimonial-user-info">
+              <h4>Carlos Mendoza</h4>
+              <span>34 años, Analista Contable</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="glass-card testimonial-card">
+          <p class="testimonial-quote">
+            Compré tres cursos costosos sobre eCommerce antes de encontrar esto. El Radar me mostró en 15 minutos por qué ninguno iba a funcionar con mi apretado horario de oficina de 9 a 6.
+          </p>
+          <div class="testimonial-user">
+            <div class="testimonial-avatar" style="background-image: radial-gradient(circle, var(--accent-green) 0%, var(--accent-blue) 100%);"></div>
+            <div class="testimonial-user-info">
+              <h4>Sofía Guerrero</h4>
+              <span>29 años, Diseñadora Gráfica</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="glass-card testimonial-card">
+          <p class="testimonial-quote">
+            Dejé de perder el tiempo viendo videos motivacionales de YouTube los sábados por la noche. Ahora tengo mi ruta asignada clara en la app y sé con precisión matemática qué hacer cada semana.
+          </p>
+          <div class="testimonial-user">
+            <div class="testimonial-avatar" style="background-image: radial-gradient(circle, var(--accent-purple) 0%, var(--accent-green) 100%);"></div>
+            <div class="testimonial-user-info">
+              <h4>Alejandro Ramírez</h4>
+              <span>41 años, Líder de Soporte IT</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="section-secondary" id="precios">
+    <div class="container">
+      <span class="section-tag">Precio Especial</span>
+      <h2>Consigue tu Hoja de Ruta de Ingresos Hoy</h2>
+      <p class="subtitle">
+        Acceso inmediato a la herramienta interactiva y a todos los bonos listados por menos del costo de una cena.
+      </p>
+
+      <div class="pricing-section">
+        <div class="glass-card pricing-card">
+          <div class="price-details">
+            <div class="total-value">Valor Original Completo: $87 USD</div>
+            <div class="deal-price">Solo <span>$27</span> USD</div>
+            <div class="price-savings">Ahorras un 69% hoy ($60 USD)</div>
+          </div>
+
+          <hr style="border: 0; border-top: 1px solid var(--border-light); margin: 1.5rem 0;">
+
+          <ul class="pricing-list">
+            <li class="pricing-list-item">
+              <span class="pricing-list-item-check">✓</span>
+              <span>Acceso de por vida a la herramienta **Radar de Ingresos**</span>
+            </li>
+            <li class="pricing-list-item">
+              <span class="pricing-list-item-check">✓</span>
+              <span>Bono 1: Filtro Antihumo Integrado</span>
+            </li>
+            <li class="pricing-list-item">
+              <span class="pricing-list-item-check">✓</span>
+              <span>Bono 2: Planeador interactivo Agenda Viable</span>
+            </li>
+            <li class="pricing-list-item">
+              <span class="pricing-list-item-check">✓</span>
+              <span>Bono 3: Checklist de Arranque de 48h</span>
+            </li>
+            <li class="pricing-list-item">
+              <span class="pricing-list-item-check">✓</span>
+              <span>Bono 4: Recalibrador de Estrategia Mensual</span>
+            </li>
+            <li class="pricing-list-item">
+              <span class="pricing-list-item-check">✓</span>
+              <span>Garantía total de devolución de 7 días</span>
+            </li>
+          </ul>
+
+          <div class="btn-container" style="margin-bottom: 1rem;">
+            <a href="#checkout" class="btn-primary open-checkout-trigger" style="width: 100%; max-width: 400px;" id="pricingCtaBtn">Comenzar mi Diagnóstico Ahora</a>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">
+            Procesamiento cifrado SSL de 256 bits • Garantía incondicional de satisfacción
+          </p>
+        </div>
+      </div>
+
+      <!-- Guarantee Block -->
+      <div class="guarantee-box">
+        <div class="guarantee-badge">
+          <div class="guarantee-badge-inner">
+            <span>7</span>DÍAS
+          </div>
+        </div>
+        <div class="guarantee-info">
+          <h3>Garantía Incondicional de Reembolso</h3>
+          <p>
+            Queremos que pruebes la herramienta sin ningún tipo de riesgo financiero. Explora el sistema, responde las preguntas de recursos y obtén tu plan personalizado de 30 días. Si en los primeros 7 días sientes que los resultados o la ruta no son para ti, escríbenos y te devolvemos el 100% de tu dinero inmediatamente. Sin preguntas difíciles, sin llamadas y sin letra chica.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section-dark" id="faq">
+    <div class="container">
+      <span class="section-tag">Dudas Comunes</span>
+      <h2>Preguntas Frecuentes</h2>
+      <p class="subtitle">¿Tienes preguntas sobre el Radar de Ingresos? Aquí tienes las respuestas detalladas:</p>
+
+      <div class="faq-accordion">
+        <!-- FAQ 1 -->
+        <div class="faq-item">
+          <button class="faq-question-btn">
+            <span>¿Cómo accedo al sistema después de pagar?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              El acceso es inmediato y automatizado. Una vez completado el pago a través de nuestra plataforma segura, recibirás un correo electrónico automático con tu usuario de acceso directo para usar la aplicación directamente desde el navegador de tu celular, tablet o computadora personal.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item">
+          <button class="faq-question-btn">
+            <span>¿Es un curso en formato de video?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              No, no es un curso en video tradicional de 20 horas de teoría aburrida. Radar de Ingresos es una herramienta web interactiva diseñada para evaluar tu situación financiera y de tiempo en base a algoritmos, entregándote al final un informe ejecutable día por día. No hay videos de relleno.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item">
+          <button class="faq-question-btn">
+            <span>¿Cuánto tiempo toma ver resultados?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              El diagnóstico se realiza en unos 15 minutos en la herramienta. A partir de allí, el plan de validación de la idea recomendada está estructurado para completarse en un plazo de 30 días, dedicándole un promedio de 1 a 2 horas al día.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item">
+          <button class="faq-question-btn">
+            <span>¿Necesito experiencia o conocimientos técnicos previos?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              No. El diagnóstico del sistema detectará de inmediato cuál es tu nivel actual en áreas de marketing, ventas o programación. Si marcas que no tienes ninguna, el Radar descartará todos los negocios de alta complejidad y te asignará solo opciones factibles desde absoluto cero.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item">
+          <button class="faq-question-btn">
+            <span>¿Funciona bien en teléfonos celulares?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Sí, la interfaz web está diseñada para ser completamente responsiva con tecnología "Mobile-First". Puedes realizar tu diagnóstico y consultar tus tareas del plan de 30 días de forma fluida desde cualquier celular moderno iOS o Android.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 6 -->
+        <div class="faq-item">
+          <button class="faq-question-btn">
+            <span>¿Y si tengo muy poco dinero para invertir al inicio?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Mejor aún. El simulador descarta automáticamente cualquier modelo que requiera inventarios físicos costosos o importaciones de alto valor. Te recomendará proyectos de servicios digitales o intermediación que puedes lanzar con cero inversión inicial o presupuestos mínimos de $50 USD.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 7 -->
+        <div class="faq-item">
+          <button class="faq-question-btn">
+            <span>¿Funciona para cualquier país de Latinoamérica?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Sí. Las 15 rutas de ingresos evaluadas por el algoritmo operan en el mercado digital de forma global, lo que significa que puedes crear y vender tus servicios o activos a clientes de cualquier parte del mundo residiendo en cualquier país de la región.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 8 -->
+        <div class="faq-item">
+          <button class="faq-question-btn">
+            <span>¿Qué pasa si mi horario de trabajo cambia?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              No hay problema. Tu licencia de Radar de Ingresos incluye acceso ilimitado de por vida. Puedes usar el Recalibrador Mensual en cualquier momento para ingresar nuevos valores de tiempo o presupuesto y obtener una ruta actualizada a tu nueva realidad laboral.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="section-secondary" id="cierre-final" style="text-align: center;">
+    <div class="container" style="max-width: 800px;">
+      <span class="section-tag">Decisión Final</span>
+      <h2>Acaba con el miedo de elegir mal</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.05rem;">
+        Merecías un plan de ingresos complementarios que respetara tu escaso tiempo y tus ahorros reales. Merecías la tranquilidad de saber que cada hora que trabajas de noche te está construyendo un activo duradero en la dirección correcta.
+      </p>
+      <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.05rem;">
+        Hoy es el día de dejar de adivinar en foros o YouTube y comenzar a construir tu primera ruta de ingresos viable.
+      </p>
+      
+      <div class="btn-container">
+        <a href="#checkout" class="btn-primary open-checkout-trigger" id="finalCtaBtn">Quiero mi ruta personalizada ahora</a>
+        <div class="cta-subtext">
+          <span>Garantía de reembolso de 7 días sin preguntas</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Author Section -->
+  <section class="section-dark" id="autor">
+    <div class="container">
+      <div class="glass-card author-card">
+        <div class="author-img-wrapper">
+          <div class="author-img">
+            <div class="author-img-inner">
+              <!-- Inline fallback SVG avatar -->
+              <svg viewBox="0 0 24 24">
+                <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="author-info">
+          <h3>Sobre el Autor</h3>
+          <p>
+            Este sistema fue creado por profesionales del sector de automatización web y marketing digital que se cansaron de ver cómo personas en Latinoamérica perdían sus ahorros en cursos genéricos diseñados para mercados norteamericanos o europeos.
+          </p>
+          <p style="margin-top: 0.8rem;">
+            El objetivo del **Radar de Ingresos** es simple: reemplazar el humo y la incertidumbre teórica por un plan matemático, claro y práctico que puedas encajar en tu rutina diaria desde el primer día con confianza.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-content">
+      <div class="logo">
+        <div class="logo-icon"></div>
+        <span>Radar de Ingresos</span>
+      </div>
+      <div class="footer-links">
+        <a href="#">Términos de Servicio</a>
+        <a href="#">Políticas de Privacidad</a>
+        <a href="#">Contacto y Soporte</a>
+      </div>
+      <p class="copyright">
+        © 2026 Radar de Ingresos. Todos los derechos reservados. <br>
+        Este sitio web no forma parte de Facebook, Instagram o Meta Platforms, Inc. de ninguna manera.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Checkout Wizard Modal Simulation -->
+  <div class="modal" id="checkoutModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Pago Seguro</h3>
+        <button class="modal-close-btn">&times;</button>
+      </div>
+      
+      <!-- Wizard Progress Indicators -->
+      <div style="padding: 1.5rem 2rem 0 2rem;">
+        <div class="checkout-steps">
+          <div class="checkout-step active" id="progStep1">1</div>
+          <div class="checkout-step" id="progStep2">2</div>
+          <div class="checkout-step" id="progStep3">3</div>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem;">
+          <span>Registro</span>
+          <span>Pago</span>
+          <span>Confirmación</span>
+        </div>
+      </div>
+
+      <!-- Step 1: User Data -->
+      <div class="modal-body" id="checkoutStep1">
+        <form id="checkoutFormStep1">
+          <div class="form-group">
+            <label for="custName">Nombre Completo</label>
+            <input type="text" id="custName" class="form-input" placeholder="Juan Pérez" required>
+          </div>
+          <div class="form-group">
+            <label for="custEmail">Correo Electrónico</label>
+            <input type="email" id="custEmail" class="form-input" placeholder="juan@ejemplo.com" required>
+            <span style="font-size: 0.7rem; color: var(--text-muted); margin-top: 0.4rem; display: block;">Aquí recibirás tus credenciales de acceso inmediato.</span>
+          </div>
+          <button type="submit" class="btn-primary" style="width: 100%; margin-top: 1rem; border-radius: 8px; font-size: 1rem; padding: 1rem;">Continuar al Pago</button>
+        </form>
+      </div>
+
+      <!-- Step 2: Payment Data -->
+      <div class="modal-body" id="checkoutStep2" style="display: none;">
+        <form id="checkoutFormStep2">
+          <div class="form-group">
+            <label for="cardNumber">Número de Tarjeta</label>
+            <input type="text" id="cardNumber" class="form-input" placeholder="4111 2222 3333 4444" required>
+          </div>
+          <div class="card-inputs-grid">
+            <div class="form-group">
+              <label for="cardExpiry">Vencimiento</label>
+              <input type="text" id="cardExpiry" class="form-input" placeholder="MM/AA" required>
+            </div>
+            <div class="form-group">
+              <label for="cardCvv">CVV</label>
+              <input type="password" id="cardCvv" class="form-input" placeholder="123" maxlength="4" required>
+            </div>
+          </div>
+          <div class="payment-summary">
+            <span>Total a pagar:</span>
+            <span>$27.00 USD</span>
+          </div>
+          <button type="submit" class="btn-primary" style="width: 100%; border-radius: 8px; font-size: 1rem; padding: 1rem;">Completar Pago Seguro</button>
+        </form>
+      </div>
+
+      <!-- Step 3: Success Screen -->
+      <div class="modal-body success-screen" id="checkoutSuccess">
+        <div class="success-icon">✓</div>
+        <h3>¡Pago Procesado con Éxito!</h3>
+        <p>Tu orden por el Radar de Ingresos ha sido confirmada.</p>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">
+          Hemos enviado un correo a tu casilla de mensajes con las instrucciones y tu contraseña de acceso para iniciar el diagnóstico de inmediato.
+        </p>
+        <p style="font-size: 0.75rem; color: var(--accent-blue);">Redirigiendo a la plataforma en unos segundos...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Javascript File Link -->
+  <script src="app.js"></script>
+</body>
+</html>
