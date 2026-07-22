@@ -1,5 +1,5 @@
 **Hipótesis asumidas**
-Público: profesionales latinoamericanos de 28 a 45 años buscando un ingreso extra sin dejar su empleo. Precio inferido: $27 (ancla $87). Garantía: 7 días. Bonos: 4 herramientas interactivas automatizadas integradas en la app.
+Público: profesionales latinoamericanos de 28 a 45 años buscando un ingreso extra sin dejar su empleo. Precio inferido: $19 (ancla $87). Garantía: 7 días. Bonos: 4 herramientas interactivas automatizadas integradas en la app.
 
 ---
 
@@ -18,7 +18,7 @@ Mini-app que filtra 15 rutas de ingresos pasivos y te entrega el plan exacto par
 
 ---
 
-## De $87 por $27
+## De $87 por $19
 
 Menos que un mes de Netflix para descubrir cuál es tu única ruta viable y dejar de perder tiempo.
 
@@ -123,8 +123,8 @@ Herramienta de diagnóstico rápido para ajustar tu estrategia si te estancas en
 | Recalibrador Mensual | $ 10 |
 | **Valor Total** | **$ 87** |
 
-## Hoy ahorras $ 60
-## Precio de Hoy: $ 27
+## Hoy ahorras $ 68
+## Precio de Hoy: $ 19
 
 ---
 
