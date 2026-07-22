@@ -1,5 +1,5 @@
 **Hipótesis asumidas**
-Público: profesionales latinoamericanos de 28 a 45 años buscando un ingreso extra sin dejar su empleo. Precio inferido: $19 (ancla $87). Garantía: 7 días. Bonos: 4 herramientas interactivas automatizadas integradas en la app.
+Público: profesionales latinoamericanos de 28 a 45 años buscando un ingreso extra sin dejar su empleo. Precio: Incluido (ya pagado por el cliente). Bonos: 4 herramientas interactivas automatizadas integradas en la app.
 
 ---
 
@@ -18,7 +18,7 @@ Mini-app que filtra 15 rutas de ingresos pasivos y te entrega el plan exacto par
 
 ---
 
-## De $87 por $19
+## Acceso Completo e Incluido
 
 Menos que un mes de Netflix para descubrir cuál es tu única ruta viable y dejar de perder tiempo.
 
@@ -103,7 +103,7 @@ Herramienta de diagnóstico rápido para ajustar tu estrategia si te estancas en
 > Nombre, edad
 
 > [REEMPLAZAR POR TESTIMONIO REAL]
-> "Compré tres cursos antes de esto. El Radar me mostró en 15 minutos por qué ninguno iba a funcionar con mi horario de oficina."
+> "Compre tres cursos antes de esto. El Radar me mostró en 15 minutos por qué ninguno iba a funcionar con mi horario de oficina."
 > Nombre, edad
 
 > [REEMPLAZAR POR TESTIMONIO REAL]
@@ -123,25 +123,20 @@ Herramienta de diagnóstico rápido para ajustar tu estrategia si te estancas en
 | Recalibrador Mensual | $ 10 |
 | **Valor Total** | **$ 87** |
 
-## Hoy ahorras $ 68
-## Precio de Hoy: $ 19
+## Acceso Completo e Incluido
 
 ---
 
-# GARANTÍA INCONDICIONAL DE 7 DÍAS
+# ACCESO PRIVADO SEGURO
 
-7 días de seguridad total.
-
-Si lo pruebas y sientes que no es para ti, te devolvemos tu dinero. Sin preguntas incómodas. Sin trámites.
-
-## [PROBAR SIN RIESGO AHORA]
+Tus datos y respuestas están cifrados y se guardan únicamente de forma local en tu navegador para proteger tu privacidad.
 
 ---
 
 # PREGUNTAS FRECUENTES
 
 **¿Cómo accedo?**
-Acceso inmediato después de la compra, directo desde el navegador de tu celular o computadora.
+Acceso inmediato y gratuito registrando tu perfil, directo desde el navegador de tu celular o computadora.
 
 **¿Es un curso en video?**
 No. Es una herramienta interactiva que hace el diagnóstico y te entrega tu plan de acción listo para ejecutar.
