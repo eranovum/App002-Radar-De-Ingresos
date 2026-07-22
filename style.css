@@ -1476,6 +1476,7 @@ footer {
   .author-card {
     flex-direction: column;
     text-align: center;
+    padding: 2rem 0;
   }
 }
 
@@ -1500,5 +1501,180 @@ footer {
   
   .pricing-list {
     padding: 0 1rem;
+  }
+}
+
+/* ==========================================================================
+   PWA INSTALLATION BANNER & TOOLTIP STYLES
+   ========================================================================== */
+
+/* PWA Install Banner Container */
+.pwa-install-banner {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 600px;
+  z-index: 9999;
+  animation: pwaSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pwaSlideUp {
+  from { opacity: 0; transform: translate(-50%, 40px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+.pwa-banner-content {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, rgba(19, 27, 46, 0.9) 0%, rgba(11, 15, 25, 0.95) 100%) !important;
+  border: 1px solid rgba(139, 92, 246, 0.2) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), var(--shadow-purple-glow) !important;
+  position: relative;
+}
+
+.pwa-icon-glow {
+  font-size: 2.2rem;
+  width: 54px;
+  height: 54px;
+  background: rgba(139, 92, 246, 0.15);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
+}
+
+.pwa-text-group {
+  flex-grow: 1;
+}
+
+.pwa-text-group h4 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.25rem;
+}
+
+.pwa-text-group p {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.pwa-install-btn {
+  padding: 0.75rem 1.4rem !important;
+  font-size: 0.8rem !important;
+  font-weight: 800 !important;
+  border-radius: 8px !important;
+  flex-shrink: 0;
+}
+
+.pwa-close-btn {
+  position: absolute;
+  top: 0.8rem;
+  right: 1rem;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  cursor: pointer;
+  line-height: 1;
+  transition: var(--transition-smooth);
+}
+
+.pwa-close-btn:hover {
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* iOS Install Tooltip Container */
+.ios-install-tooltip {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 480px;
+  z-index: 9999;
+  animation: pwaSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.ios-tooltip-content {
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(19, 27, 46, 0.92) 0%, rgba(11, 15, 25, 0.96) 100%) !important;
+  border: 1px solid rgba(59, 130, 246, 0.2) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), var(--shadow-blue-glow) !important;
+  position: relative;
+}
+
+.ios-tooltip-header {
+  margin-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 0.6rem;
+}
+
+.ios-tooltip-header span {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.ios-tooltip-content p {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.ios-steps {
+  list-style-type: decimal;
+  padding-left: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-primary);
+}
+
+.ios-steps li {
+  line-height: 1.4;
+}
+
+/* Tooltip arrow pointing down for iOS Safari bottom tab-bar sharing */
+.ios-install-tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 10px 10px 0;
+  border-style: solid;
+  border-color: rgba(11, 15, 25, 0.96) transparent;
+  display: block;
+  width: 0;
+}
+
+/* Mobile optimizations for install popups */
+@media (max-width: 640px) {
+  .pwa-banner-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.8rem 1.2rem 1.2rem 1.2rem;
+    gap: 1rem;
+  }
+  
+  .pwa-install-btn {
+    width: 100%;
+  }
+  
+  .pwa-close-btn {
+    top: 0.5rem;
+    right: 0.8rem;
   }
 }

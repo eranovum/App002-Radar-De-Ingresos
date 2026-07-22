@@ -261,4 +261,76 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // --- PWA SERVICE WORKER & INSTALL PROMPT LOGIC ---
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js')
+        .then(reg => console.log('[PWA] Service Worker registrado con éxito', reg))
+        .catch(err => console.error('[PWA] Error registrando Service Worker', err));
+    });
+  }
+
+  let deferredPrompt;
+  const pwaInstallBanner = document.getElementById('pwaInstallBanner');
+  const pwaInstallBtn = document.getElementById('pwaInstallBtn');
+  const pwaCloseBannerBtn = document.getElementById('pwaCloseBannerBtn');
+  
+  const iosInstallTooltip = document.getElementById('iosInstallTooltip');
+  const iosCloseTooltipBtn = document.getElementById('iosCloseTooltipBtn');
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    if (pwaInstallBanner) {
+      pwaInstallBanner.style.display = 'block';
+    }
+  });
+
+  if (pwaInstallBtn) {
+    pwaInstallBtn.addEventListener('click', () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        deferredPrompt = null;
+        if (pwaInstallBanner) pwaInstallBanner.style.display = 'none';
+      });
+    });
+  }
+
+  if (pwaCloseBannerBtn && pwaInstallBanner) {
+    pwaCloseBannerBtn.addEventListener('click', () => {
+      pwaInstallBanner.style.display = 'none';
+    });
+  }
+
+  function isIOS() {
+    return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  }
+
+  function isInStandaloneMode() {
+    return ('standalone' in window.navigator) && (window.navigator.standalone);
+  }
+
+  if (isIOS() && !isInStandaloneMode()) {
+    setTimeout(() => {
+      if (iosInstallTooltip) {
+        iosInstallTooltip.style.display = 'block';
+        setTimeout(() => {
+          iosInstallTooltip.style.display = 'none';
+        }, 12000);
+      }
+    }, 3000);
+  }
+
+  if (iosCloseTooltipBtn && iosInstallTooltip) {
+    iosCloseTooltipBtn.addEventListener('click', () => {
+      iosInstallTooltip.style.display = 'none';
+    });
+  }
+
+  window.addEventListener('appinstalled', (evt) => {
+    console.log('[PWA] Radar de Ingresos instalado con éxito');
+    if (pwaInstallBanner) pwaInstallBanner.style.display = 'none';
+  });
 });

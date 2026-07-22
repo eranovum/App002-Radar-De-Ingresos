@@ -1,11 +1,16 @@
 const CACHE_NAME = 'radar-ingresos-v1';
 const ASSETS = [
+  '/',
+  'index.html',
+  'style.css',
+  'app.js',
   'app.html',
   'app_style.css',
   'app_dashboard.js',
   'manifest.json',
   'logo_icon.png',
-  'logo_icon_512.png'
+  'logo_icon_512.png',
+  'radar_mockup.jpg'
 ];
 
 // Install Service Worker

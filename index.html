@@ -12,6 +12,10 @@
   
   <!-- Stylesheets -->
   <link rel="stylesheet" href="style.css">
+  
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0b0f19">
 </head>
 <body>
 
@@ -239,7 +243,7 @@
       <div class="example-box">
         <h3>💡 Ejemplo Práctico de Diagnóstico</h3>
         <p>
-          Imagina que dispones de solo <strong>2 horas al día y $200 para comenzar</strong>. Si buscas en foros, la mayoría te sugerirá montar una tienda online de importación o hacer marketing multinivel.
+          Imagina que dispones of solo <strong>2 horas al día y $200 para comenzar</strong>. Si buscas en foros, la mayoría te sugerirá montar una tienda online de importación o hacer marketing multinivel.
         </p>
         <p class="example-quote">
           El Radar de Ingresos detectará de inmediato que esas rutas consumen demasiado capital inicial en publicidad y exigen logística diaria de atención. En su lugar, el sistema te dirigirá a modelos basados en servicios digitales apalancados o venta de activos digitales de bajo costo, entregándote el manual de ejecución paso a paso para configurar tu oferta en las primeras 48 horas.
@@ -655,6 +659,34 @@
         </p>
         <p style="font-size: 0.75rem; color: var(--accent-blue);">Redirigiendo a la plataforma en unos segundos...</p>
       </div>
+    </div>
+  </div>
+
+  <!-- PWA Install Banner -->
+  <div class="pwa-install-banner" id="pwaInstallBanner" style="display: none;">
+    <div class="pwa-banner-content glass-card">
+      <span class="pwa-close-btn" id="pwaCloseBannerBtn">&times;</span>
+      <div class="pwa-icon-glow">📲</div>
+      <div class="pwa-text-group">
+        <h4>Instalar Radar de Ingresos</h4>
+        <p>Agrégala a tu pantalla de inicio para usarla como una aplicación normal, más rápido y sin internet.</p>
+      </div>
+      <button class="btn-primary pwa-install-btn" id="pwaInstallBtn">Instalar App</button>
+    </div>
+  </div>
+
+  <!-- iOS Install Instruction Tooltip -->
+  <div class="ios-install-tooltip" id="iosInstallTooltip" style="display: none;">
+    <div class="ios-tooltip-content glass-card">
+      <span class="pwa-close-btn" id="iosCloseTooltipBtn">&times;</span>
+      <div class="ios-tooltip-header">
+        <span>📲 Instalar en tu iPhone / iPad</span>
+      </div>
+      <p>Para agregar esta aplicación a tu pantalla de inicio en iOS:</p>
+      <ol class="ios-steps">
+        <li>Toca el botón de compartir <strong>"Compartir"</strong> <span style="font-size: 1.1rem; vertical-align: middle;">📤</span> (en la barra inferior de Safari).</li>
+        <li>Desliza hacia abajo y selecciona <strong>"Agregar a Inicio"</strong> <span style="font-size: 1.1rem; vertical-align: middle;">➕</span>.</li>
+      </ol>
     </div>
   </div>
 
