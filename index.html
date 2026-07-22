@@ -327,7 +327,7 @@
         <!-- Testimonial 2 -->
         <div class="glass-card testimonial-card">
           <p class="testimonial-quote">
-            Compré tres cursos costosos sobre eCommerce antes de encontrar esto. El Radar me mostró en 15 minutos por qué ninguno iba a funcionar con mi apretado horario de oficina de 9 a 6.
+            Compré tres cursos costosos sobre eCommerce antes de encontrar esto. El Radar me demostró en solo 15 minutos por qué ninguno de esos modelos iba a funcionar con mi apretado horario de oficina de 9 a 6.
           </p>
           <div class="testimonial-user">
             <div class="testimonial-avatar" style="background-image: radial-gradient(circle, var(--accent-green) 0%, var(--accent-blue) 100%);"></div>
@@ -613,7 +613,7 @@
   <div class="modal" id="checkoutModal">
     <div class="modal-card">
       <div class="modal-header">
-        <h3>Pago Seguro</h3>
+        <h3>Registro de Acceso</h3>
         <button class="modal-close-btn">&times;</button>
       </div>
       
@@ -622,11 +622,9 @@
         <div class="checkout-steps">
           <div class="checkout-step active" id="progStep1">1</div>
           <div class="checkout-step" id="progStep2">2</div>
-          <div class="checkout-step" id="progStep3">3</div>
         </div>
         <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem;">
           <span>Registro</span>
-          <span>Pago</span>
           <span>Confirmación</span>
         </div>
       </div>
@@ -641,44 +639,19 @@
           <div class="form-group">
             <label for="custEmail">Correo Electrónico</label>
             <input type="email" id="custEmail" class="form-input" placeholder="juan@ejemplo.com" required>
-            <span style="font-size: 0.7rem; color: var(--text-muted); margin-top: 0.4rem; display: block;">Aquí recibirás tus credenciales de acceso inmediato.</span>
+            <span style="font-size: 0.7rem; color: var(--text-muted); margin-top: 0.4rem; display: block;">Tus respuestas e informes del diagnóstico se guardarán asociados a este perfil.</span>
           </div>
-          <button type="submit" class="btn-primary" style="width: 100%; margin-top: 1rem; border-radius: 8px; font-size: 1rem; padding: 1rem;">Continuar al Pago</button>
-        </form>
-      </div>
-
-      <!-- Step 2: Payment Data -->
-      <div class="modal-body" id="checkoutStep2" style="display: none;">
-        <form id="checkoutFormStep2">
-          <div class="form-group">
-            <label for="cardNumber">Número de Tarjeta</label>
-            <input type="text" id="cardNumber" class="form-input" placeholder="4111 2222 3333 4444" required>
-          </div>
-          <div class="card-inputs-grid">
-            <div class="form-group">
-              <label for="cardExpiry">Vencimiento</label>
-              <input type="text" id="cardExpiry" class="form-input" placeholder="MM/AA" required>
-            </div>
-            <div class="form-group">
-              <label for="cardCvv">CVV</label>
-              <input type="password" id="cardCvv" class="form-input" placeholder="123" maxlength="4" required>
-            </div>
-          </div>
-          <div class="payment-summary">
-            <span>Total a pagar:</span>
-            <span>$27.00 USD</span>
-          </div>
-          <button type="submit" class="btn-primary" style="width: 100%; border-radius: 8px; font-size: 1rem; padding: 1rem;">Completar Pago Seguro</button>
+          <button type="submit" class="btn-primary" style="width: 100%; margin-top: 1rem; border-radius: 8px; font-size: 1rem; padding: 1rem;">Comenzar Diagnóstico Gratis</button>
         </form>
       </div>
 
       <!-- Step 3: Success Screen -->
       <div class="modal-body success-screen" id="checkoutSuccess">
         <div class="success-icon">✓</div>
-        <h3>¡Pago Procesado con Éxito!</h3>
-        <p>Tu orden por el Radar de Ingresos ha sido confirmada.</p>
+        <h3>¡Registro Completado con Éxito!</h3>
+        <p>Tu cuenta gratuita para el Radar de Ingresos ha sido creada.</p>
         <p style="font-size: 0.85rem; color: var(--text-muted);">
-          Hemos enviado un correo a tu casilla de mensajes con las instrucciones y tu contraseña de acceso para iniciar el diagnóstico de inmediato.
+          Estamos configurando tu panel personalizado de diagnóstico.
         </p>
         <p style="font-size: 0.75rem; color: var(--accent-blue);">Redirigiendo a la plataforma en unos segundos...</p>
       </div>

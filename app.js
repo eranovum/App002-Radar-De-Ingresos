@@ -182,15 +182,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const triggerBtns = document.querySelectorAll('.open-checkout-trigger');
   
   const step1 = document.getElementById('checkoutStep1');
-  const step2 = document.getElementById('checkoutStep2');
   const successScreen = document.getElementById('checkoutSuccess');
   
   const form1 = document.getElementById('checkoutFormStep1');
-  const form2 = document.getElementById('checkoutFormStep2');
   
   const progressStep1 = document.getElementById('progStep1');
   const progressStep2 = document.getElementById('progStep2');
-  const progressStep3 = document.getElementById('progStep3');
 
   function openModal() {
     modal.classList.add('active');
@@ -203,15 +200,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function resetModal() {
     step1.style.display = 'block';
-    step2.style.display = 'none';
     successScreen.style.display = 'none';
     
     progressStep1.className = 'checkout-step active';
     progressStep2.className = 'checkout-step';
-    progressStep3.className = 'checkout-step';
     
     form1.reset();
-    form2.reset();
   }
 
   // Bind trigger buttons
@@ -233,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Handle Step 1 Form Submit
+  // Handle Step 1 Form Submit (Bypassing payment)
   if (form1) {
     form1.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -247,39 +241,24 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('radar_username', name);
         localStorage.setItem('radar_useremail', email);
         
-        // Proceed to Step 2
-        step1.style.display = 'none';
-        step2.style.display = 'block';
+        const submitBtn = form1.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Registrando...';
         
-        progressStep1.className = 'checkout-step completed';
-        progressStep2.className = 'checkout-step active';
-      }
-    });
-  }
-
-  // Handle Step 2 Form Submit (Simulate payment processing)
-  if (form2) {
-    form2.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      const submitBtn = form2.querySelector('button[type="submit"]');
-      const originalText = submitBtn.textContent;
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Procesando Pago Seguro...';
-      
-      // Simulate API delay
-      setTimeout(() => {
-        step2.style.display = 'none';
-        successScreen.style.display = 'block';
-        
-        progressStep2.className = 'checkout-step completed';
-        progressStep3.className = 'checkout-step active';
-        
-        // Auto-redirect to app.html after 3.5 seconds
+        // Skip step 2 (payment) and go to success screen immediately
         setTimeout(() => {
-          window.location.href = 'app.html';
-        }, 3500);
-      }, 2000);
+          step1.style.display = 'none';
+          successScreen.style.display = 'block';
+          
+          progressStep1.className = 'checkout-step completed';
+          progressStep2.className = 'checkout-step active';
+          
+          // Auto-redirect to app.html after 1.5 seconds
+          setTimeout(() => {
+            window.location.href = 'app.html';
+          }, 1500);
+        }, 800);
+      }
     });
   }
 });
