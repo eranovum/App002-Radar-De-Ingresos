@@ -17,23 +17,32 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- 2. NAVEGACIÓN ENTRE SECCIONES (TABS) ---
-  const navItems = document.querySelectorAll('.nav-item');
+  const allNavLinks = document.querySelectorAll('.nav-item, .bottom-nav-item');
   const tabPanels = document.querySelectorAll('.tab-panel');
   const panelTitle = document.getElementById('panelTitle');
 
-  navItems.forEach(item => {
+  allNavLinks.forEach(item => {
     item.addEventListener('click', (e) => {
       e.preventDefault();
       const targetPanelId = item.dataset.target;
       
-      // Remover active de todos los links y paneles
-      navItems.forEach(nav => nav.classList.remove('active'));
-      tabPanels.forEach(panel => panel.classList.remove('active'));
-
-      // Activar clickeado
-      item.classList.add('active');
-      const targetPanel = document.getElementById(targetPanelId);
-      if (targetPanel) targetPanel.classList.add('active');
+      // Sincronizar estado activo de todos los links de navegación con el mismo target
+      allNavLinks.forEach(nav => {
+        if (nav.dataset.target === targetPanelId) {
+          nav.classList.add('active');
+        } else {
+          nav.classList.remove('active');
+        }
+      });
+      
+      // Activar panel
+      tabPanels.forEach(panel => {
+        if (panel.id === targetPanelId) {
+          panel.classList.add('active');
+        } else {
+          panel.classList.remove('active');
+        }
+      });
 
       // Actualizar título de cabecera
       const titleSpan = item.querySelector('span');
@@ -41,35 +50,35 @@ document.addEventListener('DOMContentLoaded', () => {
         panelTitle.textContent = titleSpan.textContent;
       }
 
-      // En móviles, cerrar sidebar al navegar
+      // Cerrar sidebar si estuviese abierto
       const sidebar = document.getElementById('sidebar');
       if (sidebar && sidebar.classList.contains('active')) {
         sidebar.classList.remove('active');
       }
 
-      // Si navega a Checklist de Arranque, recargar contenidos según diagnóstico actual
+      // Si navega a Checklist de Arranque, recargar contenidos
       if (targetPanelId === 'checklist-panel') {
         loadChecklistArranque();
       }
     });
   });
 
-  // Toggle Sidebar en móviles
-  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-  const mobileCloseBtn = document.getElementById('mobileCloseBtn');
-  const sidebar = document.getElementById('sidebar');
+  // Cerrar Sesión (Logout)
+  const handleLogout = (e) => {
+    e.preventDefault();
+    localStorage.removeItem('radar_username');
+    localStorage.removeItem('radar_useremail');
+    localStorage.removeItem('radar_diagnosis_completed');
+    localStorage.removeItem('radar_assigned_route_id');
+    localStorage.removeItem('radar_plan_progress');
+    window.location.href = 'index.html';
+  };
 
-  if (mobileMenuBtn && sidebar) {
-    mobileMenuBtn.addEventListener('click', () => {
-      sidebar.classList.add('active');
-    });
-  }
+  const headerLogoutBtn = document.getElementById('headerLogoutBtn');
+  const sidebarLogoutLink = document.getElementById('sidebarLogoutLink');
 
-  if (mobileCloseBtn && sidebar) {
-    mobileCloseBtn.addEventListener('click', () => {
-      sidebar.classList.remove('active');
-    });
-  }
+  if (headerLogoutBtn) headerLogoutBtn.addEventListener('click', handleLogout);
+  if (sidebarLogoutLink) sidebarLogoutLink.addEventListener('click', handleLogout);
 
 
   // --- 3. BASE DE DATOS DE 15 RUTAS DE INGRESOS PASIVOS ---
@@ -456,7 +465,7 @@ document.addEventListener('DOMContentLoaded', () => {
       tasks.push({ day: 16, title: "Optimización de Textos del Bot", desc: "Acorta los párrafos de respuesta del bot. Hazlos más directos y añade emojis amigables." });
       tasks.push({ day: 17, title: "Estudio de Flujos de WhatsApp", desc: "Aprende cómo funciona el canal de WhatsApp Business en ManyChat para ofrecer el servicio adicional." });
       tasks.push({ day: 18, title: "Propuesta de Upgrade de Pago", desc: "Presenta las métricas de prueba de 7 días al cliente y plantéale un fee mensual de mantenimiento de $150 USD." });
-      tasks.push({ day: 19, title: "Firma de Contrato y Primer Cobro", desc: "Cobra tu primer adelanto. Configura cobros recurrentes usando Stripe or PayPal." });
+      tasks.push({ day: 19, title: "Firma de Contrato y Primer Cobro", desc: "Cobra tu primer adelanto. Configura cobros recurrentes usando Stripe o PayPal." });
       tasks.push({ day: 20, title: "Soporte y Optimización Semanal", desc: "Limpia la base de datos de Sheets y añade nuevas preguntas frecuentes detectadas en los chats." });
       tasks.push({ day: 21, title: "Creación de Caso de Estudio", desc: "Escribe un documento de 1 página resumiendo cuántas conversaciones automatizó el bot este mes." });
       tasks.push({ day: 22, title: "Prospección por Recomendación", desc: "Pide al cliente que te presente con otros 2 dueños de negocio a cambio de un mes gratis de mantenimiento." });
@@ -536,43 +545,45 @@ document.addEventListener('DOMContentLoaded', () => {
       tasks.push({ day: 27, title: "Auditoría Financiera Inicial", desc: "Calcula los márgenes reales del proyecto descontando comisiones." });
       tasks.push({ day: 28, title: "Optimización del Embudo de Ventas", desc: "Alinea las descripciones de tu enlace según las dudas que tuvo el comprador." });
       tasks.push({ day: 29, title: "Plan de Reinversión de Ganancias", desc: "Fija presupuestos para herramientas premium de cara al siguiente mes." });
-      tasks.push({ day: 30, title: "Cierre de Mes y Siguiente Hoja de Ruta", desc: "Felicidades, completaste la hoja de ruta. Diseña el plan de escala del canal." });
+      tasks.push({ day: 30, title: "Cierre de Mes y Siguiente Hoja de Ruta", desc: "¡Felicidades! Completaste el ciclo de validación. Listo para escalar." });
     }
     
     return tasks;
   }
 
-  // --- 4. CONTROLADOR DEL DIAGNÓSTICO (WIZARD) ---
-  let currentStep = 1;
-  const totalSteps = 5;
-  const wizardSkills = new Set(['ninguna']);
 
+  // --- 4. CONTROLADOR DEL WIZARD DE DIAGNÓSTICO ---
+  const diagnosticForm = document.getElementById('diagnosticForm');
+  const wizardSlides = document.querySelectorAll('.wizard-step-slide');
+  const wizardProgress = document.getElementById('wizardProgress');
+  const currentStepNum = document.getElementById('currentStepNum');
   const wizardCapital = document.getElementById('wizardCapital');
   const wizardCapitalDisplay = document.getElementById('wizardCapitalDisplay');
   const wizardTime = document.getElementById('wizardTime');
   const wizardTimeDisplay = document.getElementById('wizardTimeDisplay');
-  const wizardProgress = document.getElementById('wizardProgress');
-  const currentStepNum = document.getElementById('currentStepNum');
   const skillCardOptions = document.querySelectorAll('.skill-card-option');
+  
+  let currentStep = 1;
+  let wizardSkills = new Set(['ninguna']);
 
-  // Sliders visual updating
-  if (wizardCapital && wizardCapitalDisplay) {
+  // Actualizar valores numéricos de los sliders en pantalla
+  if (wizardCapital) {
     wizardCapital.addEventListener('input', (e) => {
       wizardCapitalDisplay.textContent = `$${e.target.value} USD`;
     });
   }
 
-  if (wizardTime && wizardTimeDisplay) {
+  if (wizardTime) {
     wizardTime.addEventListener('input', (e) => {
       wizardTimeDisplay.textContent = `${e.target.value} horas / semana`;
     });
   }
 
-  // Multi-select Skills Option Cards
+  // Multi-select Habilidades
   skillCardOptions.forEach(card => {
     card.addEventListener('click', () => {
       const skill = card.dataset.skill;
-
+      
       if (skill === 'ninguna') {
         wizardSkills.clear();
         wizardSkills.add('ninguna');
@@ -584,7 +595,7 @@ document.addEventListener('DOMContentLoaded', () => {
         wizardSkills.delete('ninguna');
         const noneCard = Array.from(skillCardOptions).find(c => c.dataset.skill === 'ninguna');
         if (noneCard) noneCard.classList.remove('active');
-
+        
         if (wizardSkills.has(skill)) {
           wizardSkills.delete(skill);
           card.classList.remove('active');
@@ -592,7 +603,8 @@ document.addEventListener('DOMContentLoaded', () => {
           wizardSkills.add(skill);
           card.classList.add('active');
         }
-
+        
+        // Si no queda ninguna seleccionada, activar "ninguna"
         if (wizardSkills.size === 0) {
           wizardSkills.add('ninguna');
           if (noneCard) noneCard.classList.add('active');
@@ -601,15 +613,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Wizard Navigation
+  // Botones de Navegación del Wizard
   const nextBtns = document.querySelectorAll('.next-step-btn');
   const prevBtns = document.querySelectorAll('.prev-step-btn');
 
   nextBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      if (currentStep < totalSteps) {
-        currentStep++;
-        goToStep(currentStep);
+      if (currentStep < 5) {
+        goToStep(currentStep + 1);
       }
     });
   });
@@ -617,181 +628,173 @@ document.addEventListener('DOMContentLoaded', () => {
   prevBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       if (currentStep > 1) {
-        currentStep--;
-        goToStep(currentStep);
+        goToStep(currentStep - 1);
       }
     });
   });
 
   function goToStep(step) {
-    // Esconder todos los slides
-    document.querySelectorAll('.wizard-step-slide').forEach(slide => {
-      slide.classList.remove('active');
-    });
-
-    // Mostrar slide actual
-    const activeSlide = document.querySelector(`.wizard-step-slide[data-step="${step}"]`);
-    if (activeSlide) activeSlide.classList.add('active');
-
-    // Actualizar barra e indicador
-    if (wizardProgress) {
-      wizardProgress.style.width = `${(step / totalSteps) * 100}%`;
-    }
-    if (currentStepNum) currentStepNum.textContent = step;
+    // Validar y ocultar slide actual
+    const currentSlide = document.querySelector(`.wizard-step-slide[data-step="${currentStep}"]`);
+    if (currentSlide) currentSlide.classList.remove('active');
     
     currentStep = step;
+    
+    // Mostrar nuevo slide
+    const nextSlide = document.querySelector(`.wizard-step-slide[data-step="${currentStep}"]`);
+    if (nextSlide) nextSlide.classList.add('active');
+
+    // Actualizar barra e indicador
+    if (currentStepNum) currentStepNum.textContent = currentStep;
+    if (wizardProgress) {
+      wizardProgress.style.width = `${currentStep * 20}%`;
+    }
   }
 
-  // Procesar Formulario de Diagnóstico
-  const diagnosticForm = document.getElementById('diagnosticForm');
+  // Submit del Diagnóstico (Matriz de Fricción)
   if (diagnosticForm) {
     diagnosticForm.addEventListener('submit', (e) => {
       e.preventDefault();
+      
+      const capitalVal = parseInt(wizardCapital.value);
+      const timeVal = parseInt(wizardTime.value);
+      const riskVal = document.querySelector('input[name="wizardRisk"]:checked').value;
+      const goalVal = document.querySelector('input[name="wizardGoal"]:checked').value;
 
-      const capital = parseInt(wizardCapital.value);
-      const time = parseInt(wizardTime.value);
-      const risk = document.querySelector('input[name="wizardRisk"]:checked').value;
-      const goal = document.querySelector('input[name="wizardGoal"]:checked').value;
-
-      calculateDiagnosis(capital, time, wizardSkills, risk, goal);
+      // Ejecutar Algoritmo de Matriz de Fricción
+      runFrictionMatrix(capitalVal, timeVal, wizardSkills, riskVal, goalVal);
     });
   }
 
-  function calculateDiagnosis(capital, time, skills, risk, goal) {
-    let selectedRoute = null;
-    let lowestFriction = 100;
+  function runFrictionMatrix(capital, time, skills, risk, goal) {
+    // 1. Filtrar rutas viables por requerimientos mínimos absolutos
+    let viableRoutes = routesDatabase.filter(r => r.minCapital <= capital && r.minTime <= time);
+    
+    // Si ninguna cumple (valores extremadamente bajos), dar las rutas de entrada mínima
+    if (viableRoutes.length === 0) {
+      viableRoutes = routesDatabase.filter(r => r.minCapital === 0);
+    }
 
-    // Recorrer toda la base de datos de rutas para encontrar la de menor fricción compatible
-    routesDatabase.forEach(route => {
-      let friction = route.baseFriction;
+    // 2. Calcular fricción personalizada para cada ruta viable
+    const routeScores = viableRoutes.map(route => {
+      let finalFriction = route.baseFriction;
 
-      // Penalización por Capital Insuficiente
-      if (capital < route.minCapital) {
-        const diff = route.minCapital - capital;
-        friction += Math.min(50, Math.ceil(diff / 5)); // Fuerte penalización
+      // Ajuste por habilidades
+      if (!skills.has('ninguna')) {
+        route.matchSkills.forEach(ms => {
+          if (skills.has(ms)) {
+            finalFriction -= 8; // Disminuye fricción si posee la habilidad
+          }
+        });
       }
 
-      // Penalización por Tiempo Insuficiente
-      if (time < route.minTime) {
-        const diff = route.minTime - time;
-        friction += Math.min(40, diff * 6); // Fuerte penalización por falta de horas
-      }
-
-      // Bonificación por Habilidades Coincidentes (Match Skills)
-      let skillsMatchCount = 0;
-      route.matchSkills.forEach(s => {
-        if (skills.has(s)) {
-          skillsMatchCount++;
-        }
-      });
-      friction -= (skillsMatchCount * 8);
-
-      // Alineación con Tolerancia al Riesgo
+      // Ajuste por Tolerancia al Riesgo
       if (risk === 'bajo' && route.difficulty === 'alta') {
-        friction += 25;
+        finalFriction += 20; // Mucho riesgo psicológico
       } else if (risk === 'alto' && route.difficulty === 'alta') {
-        friction -= 10;
+        finalFriction -= 10; // Listo para acelerar modelos difíciles
       }
 
-      // Alineación con el Objetivo Principal
-      if (goal === 'rapido' && route.difficulty === 'baja') {
-        friction -= 10;
-      } else if (goal === 'automatizado' && (route.id === 4 || route.id === 7 || route.id === 11)) {
-        friction -= 15; // Rutas de infoproductos / newsletters
+      // Ajuste por Objetivos
+      if (goal === 'automatizado' && (route.id === 1 || route.id === 4 || route.id === 11 || route.id === 10)) {
+        finalFriction -= 5; // Encaja con ingresos pasivos puros
+      } else if (goal === 'rapido' && route.difficulty === 'baja') {
+        finalFriction -= 7; // Encaja con monetizar de inmediato
       }
 
-      // Límites de seguridad para la fricción
-      if (friction < 10) friction = 10;
-      if (friction > 98) friction = 98;
+      // Limitar fricción entre 10% y 95%
+      finalFriction = Math.max(10, Math.min(95, finalFriction));
 
-      // Elegir la ruta con menor fricción
-      if (friction < lowestFriction) {
-        lowestFriction = friction;
-        selectedRoute = route;
-      }
+      return {
+        route: route,
+        score: finalFriction
+      };
     });
 
-    // Guardar diagnóstico en localStorage
-    const diagnosisData = {
-      routeId: selectedRoute.id,
-      frictionScore: lowestFriction,
-      completedTasks: []
-    };
-    localStorage.setItem('radar_diagnosis', JSON.stringify(diagnosisData));
+    // 3. Seleccionar la ruta con menor Índice de Fricción
+    routeScores.sort((a, b) => a.score - b.score);
+    const winner = routeScores[0];
 
-    // Renderizar Dashboard
-    renderDashboard(selectedRoute, lowestFriction, []);
+    // 4. Guardar diagnóstico en localStorage
+    const diagnosisResult = {
+      routeId: winner.route.id,
+      frictionScore: winner.score,
+      date: new Date().toISOString(),
+      completedTasks: [] // lista de índices de días completados
+    };
+
+    localStorage.setItem('radar_diagnosis', JSON.stringify(diagnosisResult));
+
+    // 5. Renderizar Dashboard
+    renderDashboard(winner.route, winner.score, []);
   }
 
-  // --- 5. RENDERIZACIÓN DEL DASHBOARD DE DIAGNÓSTICO ---
+
+  // --- 5. RENDERIZADO DEL DASHBOARD Y PLAN DE 30 DIAS ---
   function renderDashboard(route, frictionScore, completedTasks) {
-    // Esconder Wizard y mostrar Dashboard
     const wizardContainer = document.getElementById('radar-wizard-container');
     const dashboardContainer = document.getElementById('radar-dashboard-container');
+    
     if (wizardContainer) wizardContainer.style.display = 'none';
     if (dashboardContainer) dashboardContainer.style.display = 'block';
 
-    // Rellenar datos de la ruta
-    const assignedRouteTitle = document.getElementById('assignedRouteTitle');
-    const assignedRouteComplexity = document.getElementById('assignedRouteComplexity');
-    const assignedRouteDesc = document.getElementById('assignedRouteDesc');
+    // Rellenar información de la ruta
+    const routeTitle = document.getElementById('assignedRouteTitle');
+    const routeComplexity = document.getElementById('assignedRouteComplexity');
+    const routeDesc = document.getElementById('assignedRouteDesc');
 
-    if (assignedRouteTitle) assignedRouteTitle.textContent = route.title;
-    if (assignedRouteComplexity) {
-      assignedRouteComplexity.className = `badge-complexity ${route.difficulty}`;
-      assignedRouteComplexity.textContent = `Dificultad: ${route.difficulty.toUpperCase()}`;
+    if (routeTitle) routeTitle.textContent = route.title;
+    if (routeComplexity) {
+      routeComplexity.textContent = `Dificultad: ${route.difficulty.toUpperCase()}`;
+      routeComplexity.className = `badge-complexity ${route.difficulty}`;
     }
-    if (assignedRouteDesc) assignedRouteDesc.textContent = route.desc;
+    if (routeDesc) routeDesc.textContent = route.desc;
 
-    // Renderizar medidor de Fricción (Gauge)
-    const frictionGaugePercentage = document.getElementById('frictionGaugePercentage');
-    const frictionGaugeLabel = document.getElementById('frictionGaugeLabel');
-    const frictionGaugeFill = document.getElementById('frictionGaugeFill');
+    // Rellenar Indicador de Fricción
+    const gaugePercent = document.getElementById('frictionGaugePercentage');
+    const gaugeFill = document.getElementById('frictionGaugeFill');
+    const gaugeLabel = document.getElementById('frictionGaugeLabel');
 
-    if (frictionGaugePercentage) frictionGaugePercentage.textContent = `${frictionScore}%`;
-    
-    let label = "Baja";
-    let color = "var(--accent-green)";
-    if (frictionScore >= 35 && frictionScore < 60) {
-      label = "Moderada";
-      color = "var(--accent-blue)";
-    } else if (frictionScore >= 60) {
-      label = "Crítica";
-      color = "var(--accent-red)";
-    }
-
-    if (frictionGaugeLabel) {
-      frictionGaugeLabel.textContent = label;
-      frictionGaugeLabel.style.color = color;
-    }
-
-    if (frictionGaugeFill) {
-      // Dasharray total del círculo es 251.2 (r=40 -> 2 * PI * 40)
-      const strokeOffset = 251.2 - (251.2 * frictionScore) / 100;
-      frictionGaugeFill.style.strokeDashoffset = strokeOffset;
-      frictionGaugeFill.style.stroke = color;
+    if (gaugePercent) gaugePercent.textContent = `${frictionScore}%`;
+    if (gaugeFill) {
+      // Radio = 40. Perímetro = 2 * PI * r = 251.2
+      const offset = 251.2 - (251.2 * frictionScore) / 100;
+      gaugeFill.style.strokeDashoffset = offset;
+      
+      // Color según nivel de fricción
+      if (frictionScore < 30) {
+        gaugeFill.style.stroke = 'var(--accent-green)';
+        if (gaugeLabel) gaugeLabel.textContent = 'Baja';
+      } else if (frictionScore < 55) {
+        gaugeFill.style.stroke = 'var(--accent-blue)';
+        if (gaugeLabel) gaugeLabel.textContent = 'Moderada';
+      } else {
+        gaugeFill.style.stroke = 'var(--accent-red)';
+        if (gaugeLabel) gaugeLabel.textContent = 'Alta';
+      }
     }
 
-    // Generar tareas del plan de 30 días
+    // Renderizar Plan de 30 Días
     const week1Tasks = document.getElementById('week1-tasks');
     const week2Tasks = document.getElementById('week2-tasks');
     const week3Tasks = document.getElementById('week3-tasks');
     const week4Tasks = document.getElementById('week4-tasks');
 
     if (week1Tasks && week2Tasks && week3Tasks && week4Tasks) {
-      week1Tasks.innerHTML = "";
-      week2Tasks.innerHTML = "";
-      week3Tasks.innerHTML = "";
-      week4Tasks.innerHTML = "";
+      // Limpiar tareas anteriores
+      week1Tasks.innerHTML = '';
+      week2Tasks.innerHTML = '';
+      week3Tasks.innerHTML = '';
+      week4Tasks.innerHTML = '';
 
-      const planTasks = generate30DayTasks(route.id, route.title);
+      const tasks30 = generate30DayTasks(route.id, route.title);
 
-      planTasks.forEach(task => {
-        const isChecked = completedTasks.includes(task.day);
-        
+      tasks30.forEach((task, index) => {
+        const isChecked = completedTasks.includes(index);
         const li = document.createElement('li');
         li.className = `task-item ${isChecked ? 'checked' : ''}`;
-        li.dataset.index = task.day;
+        li.dataset.index = index;
+        
         li.innerHTML = `
           <label class="task-checkbox-container">
             <input type="checkbox" class="task-check-input" ${isChecked ? 'checked' : ''}>
@@ -803,6 +806,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         `;
 
+        // Clasificar por semanas
         if (task.day <= 7) {
           week1Tasks.appendChild(li);
         } else if (task.day <= 15) {
