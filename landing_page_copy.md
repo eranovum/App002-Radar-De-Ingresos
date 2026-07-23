@@ -103,7 +103,7 @@ Herramienta de diagnóstico rápido para ajustar tu estrategia si te estancas en
 > Nombre, edad
 
 > [REEMPLAZAR POR TESTIMONIO REAL]
-> "Compre tres cursos antes de esto. El Radar me mostró en 15 minutos por qué ninguno iba a funcionar con mi horario de oficina."
+> "Compré tres cursos antes de esto. El Radar me mostró en 15 minutos por qué ninguno iba a funcionar con mi horario de oficina."
 > Nombre, edad
 
 > [REEMPLAZAR POR TESTIMONIO REAL]
